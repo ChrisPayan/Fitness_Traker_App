@@ -10,6 +10,15 @@ router.get("/", function (req, res) {
     }
 });
 
+router.get("/range", function (req, res) {
+    try {
+        res.status(200).json("We got range");
+    } catch (error) {
+        res.status(500).json(error);
+
+    }
+});
+
 router.post("/", function (req, res) {
     try {
         res.status(200).json("We posted info");
