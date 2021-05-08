@@ -3,13 +3,21 @@ const router = require("express").Router();
 
 router.get("/", function (req, res) {
     try {
-        res.status(200).json("Lets Go");
+        res.status(200).json("We got info");
     } catch (error) {
         res.status(500).json(error);
 
     }
 });
 
+router.post("/", function (req, res) {
+    try {
+        res.status(200).json("We posted info");
+    } catch (error) {
+        res.status(500).json(error);
+
+    }
+});
 
 
 module.exports = router;
