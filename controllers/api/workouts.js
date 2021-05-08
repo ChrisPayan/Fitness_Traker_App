@@ -1,10 +1,10 @@
 const path = require("path");
+const { Workout } = require("../../models");
 const router = require("express").Router();
-const db = require("../../models");
 
 router.get("/", async function (req, res) {
     try {
-        const workout = await db.Workout.find({});
+        const workout = await Workout.find({});
         res.status(200).json(workout);
     } catch (error) {
         res.status(500).json(error);
@@ -12,8 +12,9 @@ router.get("/", async function (req, res) {
     }
 });
 
-router.get("/range", function (req, res) {
+router.get("/range", async function (req, res) {
     try {
+        const workout = await Workout.find()
         res.status(200).json("We got range");
     } catch (error) {
         res.status(500).json(error);
@@ -21,9 +22,10 @@ router.get("/range", function (req, res) {
     }
 });
 
-router.post("/", function (req, res) {
+router.post("/", async function (req, res) {
     try {
-        res.status(200).json("We posted info");
+        const workout = await Workout.create(req.body);
+        res.status(200).json(workout);
     } catch (error) {
         res.status(500).json(error);
 
