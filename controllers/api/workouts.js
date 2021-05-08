@@ -32,9 +32,14 @@ router.post("/", async function (req, res) {
     }
 });
 
-router.put("/", function (req, res) {
+router.put("/:id", async function (req, res) {
     try {
-        res.status(200).json("We put info");
+        const workout = await Workout.findByIdAndUpdate(
+            req.params.id,
+            { $push: { exercises: req.body } },
+            { new: true, runValidators: true }
+        );
+        res.status(200).json(workout);
     } catch (error) {
         res.status(500).json(error);
 
