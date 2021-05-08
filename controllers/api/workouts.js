@@ -14,8 +14,8 @@ router.get("/", async function (req, res) {
 
 router.get("/range", async function (req, res) {
     try {
-        const workout = await Workout.find()
-        res.status(200).json("We got range");
+        const workout = await Workout.find().limit(7)
+        res.status(200).json(workout);
     } catch (error) {
         res.status(500).json(error);
 
