@@ -19,5 +19,14 @@ router.post("/", function (req, res) {
     }
 });
 
+router.put("/", function (req, res) {
+    try {
+        res.status(200).json("We put info");
+    } catch (error) {
+        res.status(500).json(error);
+
+    }
+});
+
 
 module.exports = router;
