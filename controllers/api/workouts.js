@@ -1,9 +1,11 @@
 const path = require("path");
 const router = require("express").Router();
+const db = require("../../models");
 
-router.get("/", function (req, res) {
+router.get("/", async function (req, res) {
     try {
-        res.status(200).json("We got info");
+        const workout = await db.Workout.find({});
+        res.status(200).json(workout);
     } catch (error) {
         res.status(500).json(error);
 
